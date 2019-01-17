@@ -30,6 +30,7 @@ import android.widget.ListView;
 
 import com.oneplus.settings.device.utils.Constants;
 import com.oneplus.settings.device.utils.NodePreferenceActivity;
+import com.oneplus.settings.device.R
 
 public class DeviceSettings extends NodePreferenceActivity {
 
@@ -37,11 +38,13 @@ public class DeviceSettings extends NodePreferenceActivity {
     private static final String SPECTRUM_KEY = "spectrum";
     private static final String SPECTRUM_CATEGORY_KEY = "spectrum_category";
     private static final String SPECTRUM_SYSTEM_PROPERTY = "persist.spectrum.profile";
+    private static final String KEY_VIBSTRENGTH = "vib_strength";
 
     private SwitchPreference mHapticFeedback;
     private TwoStatePreference mHBMModeSwitch;
     private ListPreference mSpectrum;
     private PreferenceCategory mSpectrumCategory;
+    private VibratorStrengthPreference mVibratorStrength;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -69,6 +72,11 @@ public class DeviceSettings extends NodePreferenceActivity {
         mSpectrumCategory = (PreferenceCategory) findPreference(SPECTRUM_CATEGORY_KEY);
         if (!getResources().getBoolean(R.bool.device_supports_spectrum)) {
             getPreferenceScreen().removePreference(mSpectrumCategory);
+        }
+
+        mVibratorStrength = (VibratorStrengthPreference) findPreference(KEY_VIBSTRENGTH);
+        if (mVibratorStrength != null) {
+            mVibratorStrength.setEnabled(VibratorStrengthPreference.isSupported());
         }
     }
 

@@ -63,4 +63,9 @@
     <string name="spectrum_category_title">Spectrum</string>
     <string name="spectrum_title">Kernel Power Profile</string>
     <string name="spectrum_summary">%1$s</string>
+
+    <!-- Vibrator options -->
+    <string name="category_vibrator">Vibrator</string>
+    <string name="vib_strength_title_head">Strength</string>
+    <string name="vib_strength_summary_head">Define the strength of the vibrator</string>
 </resources>
